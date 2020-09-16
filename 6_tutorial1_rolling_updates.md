@@ -26,3 +26,38 @@ To rollback the deployment, we use the rollout undo command `kubectl rollout und
 Our webpage will be back to the Lionel version of the deployment.
 
 In a real world setting, you might have a longer history, and might want to rollback to a specific version. To do this, add a `--to-revision=version` to the specific version you want to.
+
+
+
+# Instructions
+
+1. Create first pod 
+
+	```
+	 kubectl create -f helloworld-black.yaml  --record
+
+	```
+
+2. Look at the browser version 
+
+	``` 
+	 minikube service navbar-service
+	```
+
+3. Change colour of navbar
+
+	```
+	kubectl set image deployment/navbar-deployment helloworld=karthequian/helloworld:blue
+	```
+
+4. Look at deployment history 
+
+	```
+	kubectl rollout history deployment/navbar-deployment
+	```
+
+5. Rollback to revision number
+
+	```
+	 kubectl rollout undo deployment/navbar-deployment --to-revision=1
+	```
