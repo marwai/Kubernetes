@@ -31,3 +31,11 @@
 	```
 5) minikube start --vm-driver="hyperv" --hyperv-virtual-switch="minikube"
 
+
+### Troubleshooting 
+
+	```
+	# IP not found 
+
+	
+	```
