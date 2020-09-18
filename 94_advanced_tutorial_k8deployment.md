@@ -28,3 +28,9 @@ Oracle Container Engine: https://blogs.oracle.com/developers/announcing-oracle-c
 - deploys HA masters
 - permits upgrading with kube-up 
 - use a state-sync model for dry runs and automatic idempotency
+- Generates files for AWS cloud formation and terraform 
+configuration 
+- supports custom k8 add-ons
+- uses manfiest-based api configurations
+
+# Managed k8 vs Self-install 
