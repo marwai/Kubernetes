@@ -33,5 +33,27 @@ Service accounts: Accounts managed by the k8s API
 	- Example: token, user,uid, "group1, group2, group3"
 
 ### OpenID Connects
+- If you have Open
 
 ### Webhook Mode
+- Larger organisations **common method**
+- Kube-apiservers calls out to a service define by you to tell it whether a token is valid or not
+- Use commonly in scenarios where you want to integrate k8 with a remote authentication service 
+
+# Authorisation 
+- ABAC: Attribute-based access control
+	```
+	define access control paradign using whereby access rights are granted through the use of policies that combine policies together
+	```
+	 
+- RBAC: Role-Based access control **most common**
+	```
+	Define what access a specific might have to all resources
+	```  
+
+- Webhook 
+	```
+	kube-apiserver calls out to service define by you to tell it whether 
+	```
+
+
