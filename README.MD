@@ -17,14 +17,14 @@ Docker Engine - c
 
 ## Difference between VM and container? 
 	- VM
-		○ One or many applications 
-		○ Necessary binaries and libraries that exist on OS
-		○ Entire guest OS to interact with the applications
+		- One or many applications 
+		- Necessary binaries and libraries that exist on OS
+		- Entire guest OS to interact with the applications
 	- Container
-		○ Application and all the dependencies 
-		○ Share the kernel with other containers 
-		○ Not tied to infrastructure - only needs docker engine on the host 
-		○ Run isolated processes in user space on the OS
+		- Application and all the dependencies 
+		- Share the kernel with other containers 
+		- Not tied to infrastructure - only needs docker engine on the host 
+		- Run isolated processes in user space on the OS
 ## Container Benefits for Dev
 	1. Portable - 
 	2. Packaged in standard way 
@@ -67,41 +67,43 @@ Answer median number of containers running a single host is 10. All these contai
 Kubernetes - How  to manage all containers running on single host, across whole infrastructure? 
 
 ```
-# K8 
-# an open source platform designed to automate, deploying, scaling and operation  
-# application containers 
-# K8 runs containers on clusters of virtual machines. It runs on bare metal, vm, private 
-# datacentre and public cloud.
-# Use Docker containers to develop and build applications, then K8 to run these applications # on your infrastructure
+ K8 
+ an open source platform designed to automate, deploying, scaling and operation  
+ application containers 
+ K8 runs containers on clusters of virtual machines. It runs on bare metal, vm, private 
+ datacentre and public cloud.
+ Use Docker containers to develop and build applications, then K8 to run these applications # on your infrastructure
 ```
 
 ### K8 Features 
-	```
+
 	K8 is an open source project that enables software teams of all sizes, from a small start-up to a Fortune 100 company, to automate deploying, scaling and managing applications on a group or cluster of server machines. These applications can include everything form a internal-facing web application like a content management system to marque web properties like Gmail to big data processing 
-	```
 
- __Multi-Host Container Scheduling __
-	- Done by kube-scheduler 
-	- Assign pods to nodes at runtime 
+ __Multi-Host Container Scheduling__    
+	- Done by kube-scheduler    
+	- Assign pods to nodes at runtime   
 	- Check resources, quality of service, policies, and user specifications before scheduling
-__Scalability and availability __
-	- K8 can be deployed in a highly available configuration 
-	- Multi region deployment 
-		○ __Scalability__ - Supports 5000 node clusters
-		○ 150,000 total pods
-		○ Max of 100 pods per node
-		○ Pods can be horizontally scaled via API
-		○ __ Two feature for scaling are registration and discovery - seamless nodes registers themselves with Master
-__Flexibility and Modularisation__
-	- Plug and play architecture 
-	- Extend architecture when needed 
-	- Add-ons: network drivers, service discovery, container run-time, visualisation and command 
-		○ __Service Discovery__ - Automation detection of services and endpoints via DNS or environment variables 
+	   
+__Scalability and availability__   
+	- K8 can be deployed in a highly available configuration      
+	- Multi region deployment:     
+        - __Scalability__ - Supports 5000 node clusters
+	    - 150,000 total pods    
+		- Max of 100 pods per node     
+		- Pods can be horizontally scaled via API   
+		- __Two feature for scaling are registration and discovery__ - seamless nodes registers themselves with Master
+		
+__Flexibility and Modularisation__   
+	- Plug and play architecture      
+	- Extend architecture when needed    
+	- Add-ons: network drivers, service discovery, container run-time, visualisation and command     
+		- __Service Discovery__ - Automation detection of services and endpoints via DNS or environment variables 
+		   
 __Persistent storage__ 
-	- Pods can use persistent volumes to store data
-	- Data retained across pod restarts and crashes
+	- Pods can use persistent volumes to store data   
+	- Data retained across pod restarts and crashes   
 
-__Application upgrades and downgrades
+__Application upgrades and downgrades__
 	- Supported to upgrades and rollbacks
 
 __Maintenance__
@@ -109,7 +111,7 @@ __Maintenance__
 	- APIs are versioned
 	- Turn off/on host during maintenance 
 	
-__ Logging and Monitoring__
+__Logging and Monitoring__
 	- Application monitoring built-in 
 	- TCP, HTTP or container execution health cplheck 
 	- Node health check
@@ -240,36 +242,38 @@ __ReplicaSets__
 	Ensures that a specified number of replicas for a pod are running at all times.
 	If pod is less than the number expected (pod crashes), replicaSets create a new onw 
 	```
+	
 __Deployment Controller__ 
-	- Can't declare replicaSet with itself, so deployment occurs with it. 
-	```
+	- Can't declare replicaSet with itself, so deployment occurs with it.    
+	
 	- Provides declarative updates for pods and ReplicaSets
 		Use cases:
-		○ Management : running ReplicaSets allows deployment to number of pods, and check status as a single unit
-		○ Scaling a ReplicaSets scales out the pods, and allows for deployment to handle more traffic 
+		- Management : running ReplicaSets allows deployment to number of pods, and check status as a single unit
+		- Scaling a ReplicaSets scales out the pods, and allows for deployment to handle more traffic 
 	- Pause and Resume:
-		○ Used with larger changesets
-		○ Pause Deployment, make changes, resume deployment 
+		- Used with larger changesets
+		- Pause Deployment, make changes, resume deployment 
 	- Status:
-		○ Easy way to health check
+		- Easy way to health check
 	
-		```
-__DaemonSets__
+__DaemonSets__   
 	```
-	# Ensure node run a copy of a specific pod
-	# As nodes added or removed from a cluster, DaemonSet will add or remove the required pods
+	# Ensure node run a copy of a specific pod    
+	# As nodes added or removed from a cluster, DaemonSet will add or remove the required pods  
 	```
 	
-__Jobs__ 
+__Jobs__   
 	```
-	# Supervisor process for pods carrying out batch jobs 
-	# Run individual processes that run once and complete successfully 
+	# Supervisor process for pods carrying out batch jobs    
+	# Run individual processes that run once and complete successfully   
 	```
+	
 __Services__
 	``` 
-	# Allows the communication between one set of deployments with another 
-	# To get pods in two deployments to communicate with one another 
+	# Allows the communication between one set of deployments with another    
+	# To get pods in two deployments to communicate with one another    
 	```
+	
 	- Types of Services:
 		○ Internal -  IP is only reachable within the cluster
 		○ External  - Endpoint available through node IP: port(called NodePort)
@@ -285,22 +289,23 @@ __Labels__
 	```
 
 	
-__Selectors__
-Allows you to indentify a set of objects with label
-	- Equality-based
-		○ Equality-based - include the equals and not equals (= / !=)
-	- Set-based
-		○ IN: A value should be inside a set of define values
-		○ NOTIN: A value should not be inside a set of defined values
-		○ EXISTS: Label exists or not 
+__Selectors__  
+``` 
+Allows you to indentify a set of objects with label   
+    - Equality-based - include the equals and not equals (= / !=)   
+	- Set-based:   
+             - IN: A value should be inside a set of define values   
+             - NOTIN: A value should not be inside a set of defined values   
+             - EXISTS: Label exists or not   
+```
 
 __Namespaces__
-	````
-	# Great for large enterprises
-	# Allows teams to access resources, with accountability 
-	# Great way to divide cluster resources between users
-	# Provide scope for names-must be unique in the namespace
-	```
+```
+- Great for large enterprises       
+- Allows teams to access resources, with accountability       
+- Great way to divide cluster resources between users    
+- Provide scope for names-must be unique in the namespace    
+```
 	- Default namespace created when you launch Kubernete
 
 ___
@@ -325,8 +330,10 @@ ___
 	- Reflects services as define on each node, and can do simple network stream or round-robin forwarding across a set of backends 
 	
 Kube-proxy
+```
 	1. User-space mode
 	2. Iptables mode
 	3. Ipvs Modesl
 		○ Services are define against the API server: Kube-proxy watches the API server for the addition of removal of services
 		○ Kube-proxy opens a random port on each local node 
+```
