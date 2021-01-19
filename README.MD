@@ -1,15 +1,16 @@
 # 1) Kubernetes - K8
 
 __What is Containerisation?__
-Containers - collection of software processes unified by one namespace with access to an operating system kernel that is shares with other containers and little to no access between containers 
+Containers - collection of software processes unified by one namespace with access to an operating system kernel that is
+ shares with other containers and little to no access between containers 
 
-__Docker Instance? __
-Run instance of docker image contains three things:
-	1.  A docker Image
-	2. An execution environment
-	3. A standard set of instructions 
+__Docker Instance?__    
+Run instance of docker image contains three things:    
+	1.  A docker Image    
+	2. An execution environment   
+	3. A standard set of instructions    
 
-Classes and objects - OOP analogy - container is an object, class is  a docker image 
+Classes and objects - OOP analogy - container is an object, class is  a docker image     
 
 
 
@@ -54,30 +55,35 @@ DevOps team can isolate and debug issues at the container level, limiting proble
 
 ________
 # Docker
-Answer median number of containers running a single host is 10. All these containers have to be managed in someway across the whole infrastructure.
-	- Container Orchestration is required
-	- Orchestrator feature 
-		○ provision hosts
-		○ instantiate container on a  host 
-		○ restart failing containers 
-		○ expose containers as a service outside the cluster
-		○ scaling the container up or down
+Answer median number of containers running a single host is 10. All these containers have to be managed in someway 
+across the whole infrastructure.  
+  
+	- Container Orchestration is required   
+	- Orchestrator feature:    
+		- provision hosts   
+		- instantiate container on a  host    
+		- restart failing containers    
+		- expose containers as a service outside the cluster   
+		- scaling the container up or down  
 		
 
 Kubernetes - How  to manage all containers running on single host, across whole infrastructure? 
 
 ```
  K8 
- an open source platform designed to automate, deploying, scaling and operation  
- application containers 
- K8 runs containers on clusters of virtual machines. It runs on bare metal, vm, private 
- datacentre and public cloud.
- Use Docker containers to develop and build applications, then K8 to run these applications # on your infrastructure
+ # an open source platform designed to automate, deploying, scaling and operation  
+ # application containers 
+ # K8 runs containers on clusters of virtual machines. It runs on bare metal, vm, private 
+ # datacentre and public cloud.
+ # Use Docker containers to develop and build applications, then K8 to run these applications # on your infrastructure
 ```
 
 ### K8 Features 
 
-	K8 is an open source project that enables software teams of all sizes, from a small start-up to a Fortune 100 company, to automate deploying, scaling and managing applications on a group or cluster of server machines. These applications can include everything form a internal-facing web application like a content management system to marque web properties like Gmail to big data processing 
+	K8 is an open source project that enables software teams of all sizes, from a small start-up to a Fortune 100 
+	company, to automate deploying, scaling and managing applications on a group or cluster of server machines. 
+	These applications can include everything form a internal-facing web application like a content management system 
+	to marque web properties like Gmail to big data processing 
 
  __Multi-Host Container Scheduling__    
 	- Done by kube-scheduler    
@@ -113,7 +119,7 @@ __Maintenance__
 	
 __Logging and Monitoring__
 	- Application monitoring built-in 
-	- TCP, HTTP or container execution health cplheck 
+	- TCP, HTTP or container execution health check 
 	- Node health check
 ___
 
@@ -147,7 +153,7 @@ ______
 		○ End-point controller - joins services and pods together
 		○ Service account and 
 ### etcd
-Distrubuted key value stored - uses as database and store all clusters there. 
+Distributed key value stored - uses as database and store all clusters there. 
 
 ### Kubetctl application
 	- Interacts with Master node - command line interface for K8
@@ -173,9 +179,7 @@ ______
 # Basic Building Blocks: 
 # Nodes and Pods
 
-### K8 Cluster 
-
-
+### K8 Cluster   
 Same architecture but from cluster perspective 
 ```
 Master is responsible for managing cluster and coordinates activity
@@ -202,23 +206,24 @@ Lightweight k8 implementation that creates a VM on your local machine and deploy
 ```
 K8 model, a pod is a simple unit that you can interact with. Create, deploy, delete pods, and it represents one running process on your cluster 
 ```
-__Pod contains__
-	- Docker application container 
-	- Storage resources 
-	- Unique network IP 
-	- Options that govern how the container(s) should run 
+__Pod contains__    
+	- Docker application container    
+	- Storage resources    
+	- Unique network IP    
+	- Options that govern how the container(s) should run    
+	
 	```
-           # Ephemeral, disposable entities
+    # Ephemeral, disposable entities
 	# Never self heal, not restarted by scheduler 
 	# Never create pods by themselves
 	# Always use higher-level constructs, use controllers instead 
 	```
 	- Has three states:
-		○ Pending - accepted by k8 system but container has not been created
-		○ Running - pod has been scheduled on node and all container has been created, and at least one container is  in running state
-		○ Succeeded  - all containers in the pod have exited with exit status of zero
-		○ Failed - all containers in the pod exited and at least one container has failed with a non-zero exited status
-		○ CrashLoopBackOff - failed for a reason 
+		- Pending - accepted by k8 system but container has not been created
+		- Running - pod has been scheduled on node and all container has been created, and at least one container is  in running state
+		- Succeeded  - all containers in the pod have exited with exit status of zero
+		- Failed - all containers in the pod exited and at least one container has failed with a non-zero exited status
+		- CrashLoopBackOff - failed for a reason 
 		
 	
 	__________
@@ -237,9 +242,9 @@ __Pod contains__
 	- Jobs 
 	- Services
 	
-__ReplicaSets__
+__ReplicaSets__   
 	```
-	Ensures that a specified number of replicas for a pod are running at all times.
+	Ensures that a specified number of replicas for a pod are running at all times.     
 	If pod is less than the number expected (pod crashes), replicaSets create a new onw 
 	```
 	
@@ -275,18 +280,19 @@ __Services__
 	```
 	
 	- Types of Services:
-		○ Internal -  IP is only reachable within the cluster
-		○ External  - Endpoint available through node IP: port(called NodePort)
+		- Internal -  IP is only reachable within the cluster
+		- External  - Endpoint available through node IP: port(called NodePort)
 		
 	
 # Labels, Selectors, and Namespaces
 __Labels__ 
-	```
+
+	
 	Labels are key/values pairs that are attached to objects like pods, services, and deployments. Labels are for users of K8 to identify attributes for objects 
 	
 	"release": "stable", "release" : "canary"
 	"environment" : "dev", "environment" : "QA", "environment" : "production"
-	```
+	
 
 	
 __Selectors__  
